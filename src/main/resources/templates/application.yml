@@ -1,0 +1,21 @@
+##spring:
+##  security:
+##    oauth2:
+##      resourceserver:
+##        jwt:
+##          issuer-uri: http://localhost:8080/realms/olawale
+##
+#
+##Keycloak configuration
+#keycloak.realm=Olawale
+#keycloak.auth-server-url=http://localhost:8080/realms/olawale
+#keycloak.resource=todoApp
+#keycloak.credentials.secret=DOGNyH2Gx1qBRB269HUC1fem4dl1gmAB
+#keycloak.use-resource-role-mappings=true
+#keycloak.bearer-only=false
+#keycloak.ssl-required=external
+#keycloak.principal-attribute=preferred_username
+#
+## Spring Security (optional, for custom behavior)
+##server.Ports=8080
+##spring.security.oauth2.client.provider.keycloak.issuer-uri=${keycloak.auth-server-url}/realms/${keycloak.realm}
