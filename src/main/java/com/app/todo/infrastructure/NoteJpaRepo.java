@@ -1,9 +1,8 @@
 package com.app.todo.infrastructure;
 
-import com.app.todo.domain.model.UserEntity;
+import com.app.todo.domain.model.NoteEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
 
-public interface UserJpaRepo extends JpaRepository<UserEntity, UUID>{
-}
+public interface NoteJpaRepo extends JpaRepository<NoteEntity, Long> {}

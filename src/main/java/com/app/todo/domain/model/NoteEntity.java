@@ -9,12 +9,14 @@ import lombok.NoArgsConstructor;
 import java.util.UUID;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
-public class UserEntity {
-
+@NoArgsConstructor
+@AllArgsConstructor
+public class NoteEntity {
     @Id
-    public UUID id ;
-    public String name ;
+    private Long id;
+    private String title;
+    private String content;
+    private boolean isPublic;
+    private String createdBy;
 }
