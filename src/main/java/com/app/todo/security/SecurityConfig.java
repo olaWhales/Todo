@@ -24,13 +24,13 @@ import java.util.stream.Collectors;
 @EnableWebSecurity
 @ComponentScan(basePackages = {"com.app.todo", "com.app.todo.security"})
 public class SecurityConfig {
-    public SecurityConfig() {
-        System.out.println("SecurityConfig instance created");
-    }
+//    public SecurityConfig() {
+//        System.out.println("SecurityConfig instance created");
+//    }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        System.out.println("Configuring SecurityFilterChain");
+//        System.out.println("Configuring SecurityFilterChain");
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session
@@ -40,7 +40,7 @@ public class SecurityConfig {
 //                        .requestMatchers("/api/user").authenticated()
                         .requestMatchers("/admin/**").hasRole("admin")
                         .requestMatchers("/student/**").hasRole("student")
-                        .anyRequest().permitAll()
+                        .anyRequest().authenticated()
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2
                         .jwt(jwt -> jwt.decoder(jwtDecoder())
@@ -70,8 +70,16 @@ public JwtDecoder jwtDecoder() {
         System.out.println("JwtAuthenticationConverter initialized");
         JwtAuthenticationConverter converter =  new JwtAuthenticationConverter();
         converter.setJwtGrantedAuthoritiesConverter(jwt -> {
-            Map<String, Object> realmAccess = jwt.getClaim("realm_access");
-            Object rolesObj = realmAccess.get("roles");
+
+            Map<String, Object> resourceAccess = jwt.getClaim("resource_access");
+            if(resourceAccess == null || !resourceAccess.containsKey("todoApp")) {
+                return List.of(); // No roles
+            }
+
+            @SuppressWarnings("unchecked")
+            Map<String, Object> todoAppAccess = (Map<String, Object>) resourceAccess.get("todoApp");
+            Object rolesObj = todoAppAccess.get("roles");
+
             List<String> roles = new ArrayList<>();
             if (rolesObj instanceof List<?>) {
                 for (Object role : (List<?>) rolesObj) {
@@ -80,6 +88,7 @@ public JwtDecoder jwtDecoder() {
                     }
                 }
             }
+
 
             return roles.stream()
                     .map(role -> new SimpleGrantedAuthority("ROLE_" + role))

@@ -6,8 +6,6 @@ import com.app.todo.domain.model.NoteEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
-    import java.util.UUID;
-
 @Repository
 @RequiredArgsConstructor
 public class NoteDatabaseRepo implements NoteRepo {

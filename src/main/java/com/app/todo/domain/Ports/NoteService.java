@@ -1,9 +1,11 @@
 package com.app.todo.domain.Ports;
 
-import com.app.todo.domain.model.Note;
+import com.app.todo.api.dto.request.AdminCreateNoteRequest;
+import com.app.todo.api.dto.response.AdminCreateNoteResponse;
 import org.springframework.stereotype.Component;
 
 @Component
 public interface NoteService {
-    Note createPublicNote(Note note);
+    AdminCreateNoteResponse createPublicNote(AdminCreateNoteRequest adminCreateNoteRequest, String username);
+//    Note createPublicNote(Note note);
 }
