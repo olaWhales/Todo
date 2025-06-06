@@ -1,7 +1,7 @@
 package com.app.todo.domain.application;
 
-import com.app.todo.api.dto.request.AdminCreateNoteRequest;
-import com.app.todo.api.dto.response.AdminCreateNoteResponse;
+import com.app.todo.dto.request.AdminCreateNoteRequest;
+import com.app.todo.dto.response.AdminCreateNoteResponse;
 import com.app.todo.domain.Ports.NoteRepo;
 import com.app.todo.domain.Ports.AdminCreateNoteService;
 import com.app.todo.domain.model.Note;

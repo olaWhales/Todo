@@ -1,4 +1,4 @@
-package com.app.todo.api.dto.response;
+package com.app.todo.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -8,7 +8,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AdminViewNoteResponse {
+public class AdminCreateNoteResponse {
+    private Long id;
     private String title;
     private String content;
 

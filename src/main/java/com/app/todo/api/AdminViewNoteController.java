@@ -1,6 +1,6 @@
 package com.app.todo.api;
 
-import com.app.todo.api.dto.request.AdminViewNoteRequest;
+import com.app.todo.dto.request.AdminViewNoteRequest;
 import com.app.todo.domain.Ports.AdminViewNoteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

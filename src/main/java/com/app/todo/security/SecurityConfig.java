@@ -41,6 +41,7 @@ public class SecurityConfig {
                         .requestMatchers("/admin/**").hasRole("admin")
                         .requestMatchers("/student/**").hasRole("student")
                         .requestMatchers("/user/view_note").hasRole("admin")
+                        .requestMatchers("/user/delete_note").hasRole("admin")
                         .anyRequest().authenticated()
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2

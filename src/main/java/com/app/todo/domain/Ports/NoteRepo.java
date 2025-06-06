@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface NoteRepo {
     Note save(Note note);
+
+//    NoteEntity findByTitle(String title);
 }

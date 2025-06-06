@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -24,4 +25,5 @@ public class NoteEntity {
     private String content;
     private boolean isPublic;
     private String createdBy;
+    private LocalDateTime createdDate;
 }

@@ -1,4 +1,4 @@
-package com.app.todo.api.dto.request;
+package com.app.todo.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
