@@ -5,7 +5,7 @@ import com.app.todo.api.dto.response.AdminCreateNoteResponse;
 import org.springframework.stereotype.Component;
 
 @Component
-public interface NoteService {
-    AdminCreateNoteResponse createPublicNote(AdminCreateNoteRequest adminCreateNoteRequest, String username);
+public interface AdminCreateNoteService {
+    AdminCreateNoteResponse createPublicNote(AdminCreateNoteRequest adminCreateNoteRequest, String userId);
 //    Note createPublicNote(Note note);
 }
