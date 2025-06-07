@@ -8,6 +8,8 @@ import com.app.todo.domain.model.Note;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 @RequiredArgsConstructor
 public class AdminCreateNoteServiceImpl implements AdminCreateNoteService {
@@ -26,7 +28,8 @@ public class AdminCreateNoteServiceImpl implements AdminCreateNoteService {
                 request.getTitle(),
                 request.getContent(),
                 true,
-                userId
+                userId,
+                LocalDateTime.now()
         );
 // this is where the note save
 

@@ -4,5 +4,5 @@ import com.app.todo.dto.request.AdminEditNoteRequest;
 import com.app.todo.dto.response.AdminEditNoteResponse;
 
 public interface AdminEditNoteService {
-    AdminEditNoteResponse adminEditNote(AdminEditNoteRequest adminEditNoteRequest);
+    AdminEditNoteResponse adminEditNote(Long noteId, AdminEditNoteRequest adminEditNoteRequest);
 }

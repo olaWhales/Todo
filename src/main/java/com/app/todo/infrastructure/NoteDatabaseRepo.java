@@ -20,7 +20,8 @@ public class NoteDatabaseRepo implements NoteRepo {
                 note.title(),
                 note.content(),
                 note.isPublic(),
-                note.createdBy()
+                note.createdBy(),
+                note.createdDate()
         );
         NoteEntity saved = noteJpaRepo.save(entity);
         return new Note(
@@ -28,7 +29,8 @@ public class NoteDatabaseRepo implements NoteRepo {
                 saved.getTitle(),
                 saved.getContent(),
                 saved.isPublic(),
-                saved.getCreatedBy()
+                saved.getCreatedBy(),
+                saved.getCreatedDate()
         );
     }
 

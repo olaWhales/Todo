@@ -19,22 +19,22 @@ public class AdminEditNoteServiceImpl implements AdminEditNoteService {
     private final NoteJpaRepo noteJpaRepo;
 
     @Override
-    public AdminEditNoteResponse adminEditNote(AdminEditNoteRequest adminEditNoteRequest) {
+    public AdminEditNoteResponse adminEditNote(Long noteId, AdminEditNoteRequest adminEditNoteRequest) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Jwt jwt = (Jwt) authentication.getPrincipal();
         String userId = (String) jwt.getClaims().get("sub");
-        NoteEntity  noteEntity = noteJpaRepo.findByTitle(adminEditNoteRequest.getTitle());
-        if(noteEntity == null) {throw new IllegalArgumentException("note not found");}
-        if(!noteEntity.getCreatedBy().equals(userId)) {throw new IllegalArgumentException("Please you're not permitted to edit this note");}
-        noteEntity.setTitle(adminEditNoteRequest.getTitle());
+
+        NoteEntity noteEntity = noteJpaRepo.findById(noteId).orElseThrow(() -> new IllegalArgumentException("Note not found"));
+        if (!noteEntity.getCreatedBy().equals(userId)) {throw new IllegalArgumentException("You are not permitted to edit this note");}
         noteEntity.setContent(adminEditNoteRequest.getContent());
+        noteEntity.setTitle(adminEditNoteRequest.getTitle());
+        noteEntity.setCreatedDate(LocalDateTime.now());
         noteJpaRepo.save(noteEntity);
 
-        AdminEditNoteResponse adminEditNoteResponse = new AdminEditNoteResponse();
-        adminEditNoteResponse.setContent(noteEntity.getContent());
-        adminEditNoteResponse.setTitle(noteEntity.getTitle());
-        adminEditNoteResponse.setDate(LocalDateTime.now());
-
-        return adminEditNoteResponse;
+        return new AdminEditNoteResponse(
+                noteEntity.getTitle(),
+                noteEntity.getContent(),
+                noteEntity.getCreatedDate()
+        );
     }
 }
