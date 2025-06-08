@@ -7,6 +7,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AdminDeleteNoteRequest {
+public class UserDeleteNoteRequest {
     private String title;
 }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class ProtectedController {
 
-    @GetMapping("/protected")
+    @GetMapping("/protected/")
     public String protectedPage(@AuthenticationPrincipal Jwt jwt) {
         String username = jwt.getClaim("preferred_username");
         System.out.println("Protected endpoint hit by: " + username);

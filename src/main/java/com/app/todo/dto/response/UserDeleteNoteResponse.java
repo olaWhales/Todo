@@ -1,4 +1,4 @@
-package com.app.todo.dto.request;
+package com.app.todo.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AdminEditNoteRequest {
-    private String title;
-    private String content;
+public class UserDeleteNoteResponse {
+    private String message ;
 }

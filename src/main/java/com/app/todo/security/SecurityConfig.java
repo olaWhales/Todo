@@ -15,7 +15,6 @@ import org.springframework.security.oauth2.server.resource.authentication.JwtAut
 import org.springframework.security.web.SecurityFilterChain;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -38,11 +37,12 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
 //                        .requestMatchers("/public/**").permitAll()
 //                        .requestMatchers("/api/user").authenticated()
-                        .requestMatchers("/admin/**").hasRole("admin")
+                        .requestMatchers("/user/**").hasRole("admin")
                         .requestMatchers("/student/**").hasRole("student")
-                        .requestMatchers("/user/view_note").hasRole("admin")
-                        .requestMatchers("/user/delete_note").hasRole("admin")
-                        .requestMatchers("/user/edit_note").hasRole("admin")
+                        .requestMatchers("/user/create_note/").hasRole("student")
+                        .requestMatchers("/user/view_note/").hasRole("admin")
+                        .requestMatchers("/user/delete_note/").hasRole("admin")
+                        .requestMatchers("/user/edit_note/").hasRole("admin")
                         .anyRequest().authenticated()
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2

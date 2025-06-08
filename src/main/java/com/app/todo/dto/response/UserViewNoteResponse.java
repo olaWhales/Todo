@@ -8,7 +8,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AdminViewNoteResponse {
+
+public class UserViewNoteResponse {
     private String title;
     private String content;
 

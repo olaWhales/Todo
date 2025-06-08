@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AdminCreateNoteRequest {
+public class UserCreateNoteRequest {
     private String title;
     private String content;
 

@@ -7,6 +7,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AdminViewNoteRequest {
+public class UserViewNoteRequest {
     private String title ;
 }

@@ -1,9 +1,9 @@
 package com.app.todo.domain.application;
 
-import com.app.todo.dto.request.AdminCreateNoteRequest;
-import com.app.todo.dto.response.AdminCreateNoteResponse;
+import com.app.todo.dto.request.UserCreateNoteRequest;
+import com.app.todo.dto.response.UserCreateNoteResponse;
 import com.app.todo.domain.Ports.NoteRepo;
-import com.app.todo.domain.Ports.AdminCreateNoteService;
+import com.app.todo.domain.Ports.UserCreateNoteService;
 import com.app.todo.domain.model.Note;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,14 +12,14 @@ import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
-public class AdminCreateNoteServiceImpl implements AdminCreateNoteService {
+public class UserCreateNoteServiceImpl implements UserCreateNoteService {
 
     private final NoteRepo noteRepo;
 
     @Override
-    public AdminCreateNoteResponse createPublicNote(AdminCreateNoteRequest request, String userId) {
-        System.out.println("Received request: " + request);
-        System.out.println("Username: " + userId);
+    public UserCreateNoteResponse createPublicNote(UserCreateNoteRequest request, String userId) {
+//        System.out.println("Received request: " + request);
+//        System.out.println("Username: " + userId);
 //        if (request.isPublic()) {
 //            throw new IllegalArgumentException("Only public notes are allowed for this operation.");
 //        }
@@ -34,7 +34,7 @@ public class AdminCreateNoteServiceImpl implements AdminCreateNoteService {
 // this is where the note save
 
         Note savedNote = noteRepo.save(note);
-        AdminCreateNoteResponse response = new AdminCreateNoteResponse();
+        UserCreateNoteResponse response = new UserCreateNoteResponse();
         response.setId(savedNote.id());
         response.setTitle(savedNote.title());
         response.setContent(savedNote.content());
