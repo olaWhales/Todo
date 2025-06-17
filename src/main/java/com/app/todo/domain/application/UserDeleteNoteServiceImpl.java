@@ -22,10 +22,6 @@ public class UserDeleteNoteServiceImpl implements UserDeleteNoteService {
     @Override
     public UserDeleteNoteResponse adminDeleteNoteResponse(Long noteId) {
         String userId = ApplicationUtility.userAuthentication();
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        Jwt jwt = (Jwt) authentication.getPrincipal();
-//        String userId = (String) jwt.getClaims().get(SUB_USER);
-
         NoteEntity noteEntity = noteJpaRepo.findById(noteId).orElseThrow(()-> new IllegalArgumentException(TITLE_NOT_FOUND));
         if(!noteEntity.getCreatedBy().equals(userId)) {throw new IllegalArgumentException(USER_NOT_FOUND);}
         noteJpaRepo.delete(noteEntity);

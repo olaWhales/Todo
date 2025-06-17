@@ -22,8 +22,10 @@ public class UserViewNoteServiceImpl implements UserViewNoteService {
     @Override
     public UserViewNoteResponse adminViewNote(Long noteId, UserViewNoteRequest userViewNoteRequest) {
         String userId = ApplicationUtility.userAuthentication();
-        NoteEntity noteEntity = noteJpaRepo.findById(noteId).orElseThrow(()-> new IllegalArgumentException(USER_NOT_FOUND));
-        if(!noteEntity.getCreatedBy().equals(userId)) {throw new IllegalStateException(NOT_VIEW_PERMITTED_MESSAGE);}
+        NoteEntity noteEntity = noteJpaRepo.findById(noteId).orElseThrow(() -> new IllegalArgumentException(USER_NOT_FOUND));
+        if (!noteEntity.getCreatedBy().equals(userId)) {
+            throw new IllegalStateException(NOT_VIEW_PERMITTED_MESSAGE);
+        }
         UserViewNoteResponse userViewNoteResponse = new UserViewNoteResponse();
         userViewNoteResponse.setTitle(noteEntity.getTitle());
         userViewNoteResponse.setContent(noteEntity.getContent());
